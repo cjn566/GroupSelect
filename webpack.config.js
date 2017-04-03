@@ -10,6 +10,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin(
 )
 
 module.exports = {
+    devtool: '',
     entry: './client/index.js',
     output: {
         path: path.resolve('dist'),
@@ -17,10 +18,10 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.js$/, loaders: ['react-hot-loader', 'babel-loader'], exclude: /node_modules/ },
-            { test: /\.jsx$/, loaders: ['react-hot-loader', 'babel-loader'], exclude: /node_modules/ }
+            { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+            { test: /\.jsx$/, loaders: ['babel-loader'], exclude: /node_modules/ }
         ]
     },
 
-    plugins: [HtmlWebpackPluginConfig]
+    plugins: [HtmlWebpackPluginConfig],
 }

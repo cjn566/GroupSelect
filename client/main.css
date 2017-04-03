@@ -1,0 +1,43 @@
+
+
+
+
+
+.content {
+    height: 100%;
+    width: 100%;
+}
+
+.app {
+    overflow: auto;
+}
+
+.suggestion:focus {
+    background-color: blue;
+}
+
+.search-and-suggest,
+.accepted {
+    float: left;
+    /* width: 340px; */
+    /*height: 500px;*/
+    margin: 15px;
+}
+
+.search {
+    width:200px;
+    margin:auto;
+}
+
+.slider {
+    display: block;
+    width: 95%;
+}
+
+.stale {
+    background-color: lightgray;
+}
+
+.fresh {
+    background-color: #dbffd8;
+}
