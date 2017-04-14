@@ -30,7 +30,7 @@ let logLastUseIdx = () => {
 // Return a set of relations that contain the given element name in either of the columns
 let getRelationsForLease = function (element, limit, callback) {
     db.all(
-        "SELECT * FROM relation WHERE first = $query OR second = $query ORDER BY totalUses DESC LIMIT $limit",
+        "SELECT * FROM relation WHERE first = $query OR second = $query ORDER BY count DESC LIMIT $limit",
         {
             $query: element,
             $limit: limit

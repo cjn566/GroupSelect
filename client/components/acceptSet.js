@@ -8,7 +8,7 @@ let Acceptance = function (props) {
     };
 
     return (
-        <li className="item">
+        <li className={'item ' + props.data.stale===1?'stale':'fresh'}>
             <div className="" onClick={toggleStale} id={props.id.toString()}>
                 {props.data.name}
             </div>
@@ -18,10 +18,13 @@ let Acceptance = function (props) {
 
 // AcceptSet
 export default function (props) {
-    let copytext = props.data.filter(el => !el.stale).map(el => el.number).join('\n');
+    let copytext = props.data.filter(el => !el.stale).map(el => el.name).join('\n');
     let enableButton = props.data.some(el => !el.stale);
     return (
         <div className="accepted">
+            {!props.data.length &&
+                <h2>None Selected</h2>
+            }
             <ol>
                 {props.data.map((accept, i) => {
                     return <Acceptance key={i} data={accept} toggleStale={props.toggleStale} id={i}/>

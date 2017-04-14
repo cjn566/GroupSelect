@@ -184,18 +184,19 @@ export default class extends React.Component{
         let that = this;
         let set = text.split('\n');
 
-        set.forEach(function (text) {
+        for(let line in set){
             // Check if is blank or it has already been accepted
-            if (text && !that.state.accepteds.some((el) => {
-                    return el.name === text;
+            if (set[line] && !that.state.accepteds.some((el) => {
+                    return el.name === set[line];
                 })) {
-                that.state.accepteds.unshift({name: text, stale: false});
+                that.state.accepteds.unshift({name: set[line], stale: 0});
             }
-        });
+        }
         that.checkOverflowAccepteds();
         that.cleanSuggestions();
         that.getRelations();
         that.filterText="";
+        that.onTextChange("");
     };
 
     checkOverflowAccepteds () {
@@ -226,7 +227,7 @@ export default class extends React.Component{
             }, -Infinity);
 
             // Find weighted score for each lease
-            _app.calcScores();
+            _app.calcScoresAndSort();
             _app.setState({suggestionList: _app.combineLists()});
         };
 
